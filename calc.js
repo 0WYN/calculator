@@ -3,7 +3,12 @@ const inputs = [];
 document.body.addEventListener("click", event => {
   if (event.target.nodeName == "BUTTON") {
       console.log("Clicked", event.target.id);
-      interaction(event.target.textContent);
+      if (event.target.id == "clear"){
+        while (inputs.length > 0){
+          inputs.pop();
+        }
+        document.getElementById("output").textContent = "";
+      } else {interaction(event.target.textContent);}
   }
   else{
     return
