@@ -1,9 +1,9 @@
-let x = 0;
-let y = 0;
+const inputs = [];
 
 document.body.addEventListener("click", event => {
   if (event.target.nodeName == "BUTTON") {
       console.log("Clicked", event.target.id);
+      interaction(event.target.textContent);
   }
   else{
     return
@@ -39,4 +39,12 @@ function operate(op,y,z){
     case 3:
     return divide(y,z);
   }
+}
+
+
+function interaction(click){
+  inputs.push(click);
+  document.getElementById("output").textContent = ""
+  const outputs = inputs.forEach(input => document.getElementById("output").textContent += input)
+  console.log(inputs);
 }
