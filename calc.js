@@ -8,6 +8,9 @@ document.body.addEventListener("click", event => {
           inputs.pop();
         }
         document.getElementById("output").textContent = "";
+      }
+      else if (event.target.id == 'equals') {
+        compute(inputs);
       } else {interaction(event.target.textContent);}
   }
   else{
@@ -35,13 +38,13 @@ function divide(x, y){
 
 function operate(op,y,z){
   switch(op){
-    case 0: 
+    case "+": 
     return add(y,z);
-    case 1:
+    case "-":
     return subtract(y,z);
-    case 2:
+    case "*":
     return multiply(y,z);
-    case 3:
+    case "/":
     return divide(y,z);
   }
 }
@@ -52,4 +55,13 @@ function interaction(click){
   document.getElementById("output").textContent = ""
   const outputs = inputs.forEach(input => document.getElementById("output").textContent += input)
   console.log(inputs);
+}
+
+function compute(){
+  const numOnlyFilter = /[^.0-9]/g;
+  let numOnly = document.getElementById('output').textContent;
+  numOnly = numOnly.split(numOnlyFilter);
+
+  console.log(numOnly);
+
 }
