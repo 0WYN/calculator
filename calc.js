@@ -1,5 +1,6 @@
 const inputs = [];
 
+
 document.body.addEventListener("click", event => {
   if (event.target.nodeName == "BUTTON") {
       console.log("Clicked", event.target.id);
@@ -11,42 +12,28 @@ document.body.addEventListener("click", event => {
       }
       else if (event.target.id == 'equals') {
         compute(inputs);
-      } else {interaction(event.target.textContent);}
+      }
+      else {interaction(event.target.textContent);}
   }
   else{
     return
   }
 });
 
-function add(x, y){
-  return x + y;
-}
 
-function subtract(x, y){
-  return x - y;
-}
-
-function multiply(x, y){
-  if (y == 0){
-    return "Nice Try!";
-  } else {return x * y;}
-}
-
-function divide(x, y){
-  return x/y;
-}
-
-function operate(op,y,z){
+function operate(op,x,y){
   switch(op){
     case "+": 
-    return add(y,z);
+    return (x + y);
     case "-":
-    return subtract(y,z);
+    return (x - y);
     case "*":
-    return multiply(y,z);
+    return (x * y);
     case "/":
-    return divide(y,z);
-  }
+    if (y == 0){
+      return "Nice Try!";
+    } else {return x / y;}
+    };
 }
 
 
