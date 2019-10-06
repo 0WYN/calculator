@@ -25,14 +25,9 @@ body{
     background-color: red;
 }
 
-.display{
-    margin:auto;
-    display: flex;
-    max-width: 400;
-}
-
 .output{
     font-size: 25px;
+    text-align: right;
     overflow-wrap: break-word;
     height: 100px;
     width: 300px;
