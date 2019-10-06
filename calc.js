@@ -15,7 +15,10 @@ document.body.addEventListener("click", event => {
         document.getElementById("output").textContent = "";
       }
       else if (event.target.id == 'equals') {
-        compute(displayText);
+        let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
+        document.getElementById("output").textContent = result;
+        console.log(result);
+
       }
       else if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition") {
         compute(event.target.id)
@@ -30,13 +33,13 @@ document.body.addEventListener("click", event => {
 
 function operate(op,x,y){
   switch(op){
-    case "+": 
+    case "addition": 
     return (x + y);
-    case "-":
+    case "subtract":
     return (x - y);
-    case "*":
+    case "multiply":
     return (x * y);
-    case "/":
+    case "divide":
     if (y == 0){
       return "Nice Try!";
     } else {return x / y;}
@@ -60,7 +63,9 @@ function compute(button){
   
   op.erator[0] = button;
   op.erand[0] = document.getElementById("output").textContent;
-
+  while (displayText.length > 0){
+    displayText.pop();
+  }
   console.log(op)
 
 
