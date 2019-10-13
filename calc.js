@@ -8,15 +8,7 @@ const op = {
 document.body.addEventListener("click", event => {
   if (event.target.nodeName == "BUTTON") {
       console.log("Clicked", event.target.id);
-      if (event.target.id == "clear"){
-        while (displayText.length > 0){
-          displayText.pop();
-        }
-        document.getElementById("output").textContent = "";
-        op.erand = [];
-        op.erator = [];
-      }
-      else if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition" || event.target.id == "equals") {
+     if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition" || event.target.id == "equals" || event.target.id == "clear") {
         compute(event.target.id)
       }
       else {display(event.target.textContent);}
@@ -60,6 +52,14 @@ function compute(button){
     let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
         document.getElementById("output").textContent = result;
         console.log(result);
+  }
+  else if (button == 'clear'){
+    while (displayText.length > 0){
+      displayText.pop();
+    }
+    document.getElementById("output").textContent = "";
+    op.erand = [];
+    op.erator = [];
   }
   else if (button == 'subtract' && displayText == ""){
     display(event.target.textContent)
