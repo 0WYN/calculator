@@ -67,6 +67,7 @@ function compute(button){
     displayText.pop();
   }
   console.log(op)
+  console.log(displayText)
 
 
 }
