@@ -13,14 +13,10 @@ document.body.addEventListener("click", event => {
           displayText.pop();
         }
         document.getElementById("output").textContent = "";
+        op.erand = [];
+        op.erator = [];
       }
-      else if (event.target.id == 'equals') {
-        let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
-        document.getElementById("output").textContent = result;
-        console.log(result);
-
-      }
-      else if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition") {
+      else if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition" || event.target.id == "equals") {
         compute(event.target.id)
       }
       else {display(event.target.textContent);}
@@ -41,17 +37,18 @@ function operate(op,x,y){
     return (x * y);
     case "divide":
     if (y == 0){
-      return "Nice Try!";
+      return "Oh no! You've unraveled the space time continuum!";
     } else {return x / y;}
     };
 }
 
-
+//takes the button inputs and displays then on the screen
 function display(click){
   displayText.push(click);
   document.getElementById("output").textContent = ""
   const outputs = displayText.forEach(input => document.getElementById("output").textContent += input)
   console.log(displayText);
+  //console.log(outputs)
 }
 
 function compute(button){
@@ -59,6 +56,16 @@ function compute(button){
   //let numOnly = document.getElementById('output').textContent;
   //numOnly = numOnly.split(numOnlyFilter);
   //console.log(numOnly);
+  if (button == 'equals'){
+    let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
+        document.getElementById("output").textContent = result;
+        console.log(result);
+  }
+  else if (button == 'subtract' && displayText == ""){
+    display(event.target.textContent)
+
+  } else {
+
   console.log("Yup")
   
   op.erator[0] = button;
@@ -68,6 +75,6 @@ function compute(button){
   }
   console.log(op)
   console.log(displayText)
-
+  }
 
 }
