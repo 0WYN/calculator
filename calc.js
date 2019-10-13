@@ -9,7 +9,7 @@ document.body.addEventListener("click", event => {
   if (event.target.nodeName == "BUTTON") {
       console.log("Clicked", event.target.id);
      if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition" || event.target.id == "equals" || event.target.id == "clear") {
-        compute(event.target.id)
+        handleClicks(event.target.id)
       }
       else {display(event.target.textContent);}
   }
@@ -43,12 +43,14 @@ function display(click){
   //console.log(outputs)
 }
 
-function compute(button){
+function handleClicks(button){
   //const numOnlyFilter = /[^.0-9]/g;
   //let numOnly = document.getElementById('output').textContent;
   //numOnly = numOnly.split(numOnlyFilter);
   //console.log(numOnly);
   if (button == 'equals'){
+    console.log(op.erand.length);
+    console.log(displayText.length);
     let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
         document.getElementById("output").textContent = result;
         console.log(result);
@@ -67,6 +69,8 @@ function compute(button){
   } else {
 
   console.log("Yup")
+  console.log(op.erand.length)
+  console.log(displayText.length)
   
   op.erator[0] = button;
   op.erand[0] = document.getElementById("output").textContent;
