@@ -4,29 +4,36 @@ const op = {
   erator:[]
 }
 
-//capturing all click events 
-document.body.addEventListener("click", event => {
-  if (event.target.nodeName == "BUTTON") {
-      console.log("Clicked", event.target.id);
-     if (event.target.id == "divide" || event.target.id == "multiply" || event.target.id == "subtract" || event.target.id == "addition" || event.target.id == "equals" || event.target.id == "clear") {
-        handleClicks(event.target.id)
-      }
-      else {display(event.target.textContent);}
-  }
-  else{
-    return
-  }
+//capturing all click events
+document.body.addEventListener('click', (event) => {
+	if (event.target.nodeName == 'BUTTON') {
+		console.log('Clicked', event.target.id);
+		if (
+			event.target.id == 'divide' ||
+			event.target.id == 'multiply' ||
+			event.target.id == 'subtract' ||
+			event.target.id == 'addition' ||
+			event.target.id == 'equals' ||
+			event.target.id == 'clear'
+		) {
+			handleClicks(event.target.id);
+		} else {
+			display(event.target.textContent);
+		}
+	} else {
+		return;
+	}
 });
 
 
 function operate(op,x,y){
   switch(op){
     case "addition": 
-    return (x + y);
+    return (x * 10 + y * 10)/10;
     case "subtract":
-    return (x - y);
+    return ((x * 10) - (y * 10))/10;
     case "multiply":
-    return (x * y);
+    return ((x * 10) * (y * 10))/10;
     case "divide":
     if (y == 0){
       return "Oh no! You've unraveled the space time continuum!";
@@ -51,7 +58,7 @@ function handleClicks(button){
   if (button == 'equals'){
     console.log(op.erand.length);
     console.log(displayText.length);
-    let result = operate(op.erator[0], parseInt(op.erand[0], 10), parseInt(document.getElementById("output").textContent), 10);
+    let result = operate(op.erator[0], parseFloat(op.erand[0]), parseFloat(document.getElementById("output").textContent));
         document.getElementById("output").textContent = result;
         console.log(result);
   }
@@ -68,15 +75,15 @@ function handleClicks(button){
 
   } else {
 
-  console.log("Yup")
-  console.log(op.erand.length)
-  console.log(displayText.length)
+    console.log("Yup")
+    console.log(op.erand.length)
+    console.log(displayText.length)
   
-  op.erator[0] = button;
-  op.erand[0] = document.getElementById("output").textContent;
-  while (displayText.length > 0){
-    displayText.pop();
-  }
+    op.erator[0] = button;
+    op.erand[0] = document.getElementById("output").textContent;
+    while (displayText.length > 0){
+      displayText.pop();
+    }
   console.log(op)
   console.log(displayText)
   }
