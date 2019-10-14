@@ -15,6 +15,7 @@ body{
     font-size: 50px;
     width: 100px;
     height: 100px;
+    border-radius: 10px;
 }
 
 .operator {
@@ -34,4 +35,5 @@ body{
     border: .2rem solid black;
     background-color: black;
     color: lightgray;
+    border-radius: 10px;
 }

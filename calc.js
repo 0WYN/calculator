@@ -29,11 +29,11 @@ document.body.addEventListener('click', (event) => {
 function operate(op,x,y){
   switch(op){
     case "addition": 
-    return (x * 10 + y * 10)/10;
+      return (x * 10 + y * 10)/10;
     case "subtract":
-    return ((x * 10) - (y * 10))/10;
+      return (x * 10 - y * 10)/10;
     case "multiply":
-    return ((x * 10) * (y * 10))/10;
+      return x * y;
     case "divide":
     if (y == 0){
       return "Oh no! You've unraveled the space time continuum!";
