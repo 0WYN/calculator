@@ -14,7 +14,8 @@ document.body.addEventListener('click', (event) => {
 			event.target.id == 'subtract' ||
 			event.target.id == 'addition' ||
 			event.target.id == 'equals' ||
-			event.target.id == 'clear'
+      event.target.id == 'clear' ||
+      event.target.id == 'decimal'
 		) {
 			handleClicks(event.target.id);
 		} else {
@@ -38,7 +39,7 @@ function operate(op,x,y){
     if (y == 0){
       return "Oh no! You've unraveled the space time continuum!";
     } else {return x / y;}
-    };
+  };
 }
 
 //takes the button inputs and displays then on the screen
@@ -59,8 +60,8 @@ function handleClicks(button){
     console.log(op.erand.length);
     console.log(displayText.length);
     let result = operate(op.erator[0], parseFloat(op.erand[0]), parseFloat(document.getElementById("output").textContent));
-        document.getElementById("output").textContent = result;
-        console.log(result);
+    document.getElementById("output").textContent = result;
+    console.log(result);
   }
   else if (button == 'clear'){
     while (displayText.length > 0){
@@ -72,8 +73,15 @@ function handleClicks(button){
   }
   else if (button == 'subtract' && displayText == ""){
     display(event.target.textContent)
-
-  } else {
+  } 
+  else if (button == 'decimal'){
+    console.log(document.getElementById("output").textContent.indexOf('.'))
+    if (document.getElementById("output").textContent.indexOf('.') > -1){
+      return
+    } else {display('.');}
+    
+  }
+  else {
 
     console.log("Yup")
     console.log(op.erand.length)
